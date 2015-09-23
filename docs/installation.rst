@@ -35,7 +35,7 @@ Add the ``webp_support`` context processor to your list of context processors:
 Run ``./manage.py migrate`` to add the required tables to the database.
 
 
-Additionally, you may also want to configure the ``MEDIA_URL`` and ``MEDIA_ROOT`` settings for you project in settings.py. For example:
+Additionally, you may also want to configure the ``MEDIA_URL`` and ``MEDIA_ROOT`` settings for your project in settings.py. For example:
 
 .. code-block:: python
 

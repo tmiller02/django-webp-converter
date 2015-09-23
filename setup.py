@@ -9,11 +9,11 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='django-webp-converter',
-    version='0.1',
+    version='0.1.2',
     packages=find_packages(exclude=('django_webp_converter',)),
     include_package_data=True,
     license='BSD License',
-    description='A simple Django app for converting WebP images.',
+    description='A simple Django app for creating static WebP images.',
     long_description=README,
     author='Tom Miller',
     author_email='02millert@gmail.com',

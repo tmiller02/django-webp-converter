@@ -24,7 +24,7 @@ class WebPImage(models.Model):
         """
         full_image_path = finders.find(self.static_path)
         if not full_image_path:
-            raise Exception("Can't find static image.")
+            raise IOError("Can't find static image.")
         return full_image_path
 
     @property

@@ -20,4 +20,4 @@ def webp_image_querysets(total_count, object_number=100):
 def delete_webp_folder():
     webp_path = default_storage.path(WEBP_CONVERTER_PREFIX)
     if os.path.exists(webp_path):
-        shutil.rmtree(default_storage.path(WEBP_CONVERTER_PREFIX))
+        shutil.rmtree(webp_path)
