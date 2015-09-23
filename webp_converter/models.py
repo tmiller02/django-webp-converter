@@ -1,11 +1,12 @@
 import os
 import hashlib
 from PIL import Image
+
 from django.core.files.storage import default_storage
 from django.contrib.staticfiles import finders
 from django.db import models
 from django.utils.encoding import force_bytes
-from django.conf import settings
+
 from webp_converter.conf.settings import WEBP_CONVERTER_PREFIX
 
 

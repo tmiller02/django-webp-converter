@@ -1,7 +1,7 @@
 from django import template
 from django.contrib.staticfiles.templatetags.staticfiles import static
-from webp_converter.utils import make_image_key
 from django.core.cache import cache
+from webp_converter.utils import make_image_key
 from webp_converter.models import WebPImage
 
 register = template.Library()
@@ -12,8 +12,8 @@ def static_webp(context, static_path, quality=None):
     try:
         webp_compatible = context['webp_compatible']
     except KeyError:
-        raise IOError("'webp_converter.context_processors.webp_support' "
-                      "needs to be added to your context processors.")
+        raise Exception("'webp_converter.context_processors.webp_support' "
+                        "needs to be added to your context processors.")
     if not webp_compatible:
         return static(static_path)
     key = make_image_key(static_path, quality)

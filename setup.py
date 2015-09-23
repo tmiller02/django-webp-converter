@@ -13,7 +13,7 @@ setup(
     packages=find_packages(exclude=('django_webp_converter',)),
     include_package_data=True,
     license='BSD License',
-    description='A simple Django app to conduct Web-based polls.',
+    description='A simple Django app for converting WebP images.',
     long_description=README,
     author='Tom Miller',
     author_email='02millert@gmail.com',
