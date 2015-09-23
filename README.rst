@@ -1,0 +1,1 @@
+A small Django app for converting static images to WebP images. Read the docs at http://django-webp-converter.readthedocs.org
