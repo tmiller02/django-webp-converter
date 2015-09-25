@@ -12,7 +12,7 @@ browsers.
 WebP lossless images are 26% smaller in size compared to PNGs. WebP lossy images
 are 25-34% smaller in size compared to JPEG images at equivalent SSIM index
 (https://developers.google.com/speed/webp/?hl=en). By using WebP images, you
-can reduce bandwidth and increase page load speeds with no noticeable change
+can increase page load speeds with no noticeable change
 in image quality.
 
 
