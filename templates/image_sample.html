@@ -1,0 +1,41 @@
+{% load static %}
+{% load webp_converter %}
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Image Samples</title>
+</head>
+
+<body>
+  <h1>Image Samples</h1>
+
+  <h2>Original Images</h2>
+
+  <img src="{% static "images/bird-s-eye-view-of-sea-waves-1631474.jpg" %}">
+  <img src="{% static "images/bird-s-eye-view-of-two-boats-on-ocean-1139041.jpg" %}">
+  <img src="{% static "images/brown-field-under-blue-sky-2986509.jpg" %}">
+
+  <h2>WebP Images</h2>
+
+  <h3>Default Quality</h3>
+
+  <img src="{% static_webp "images/bird-s-eye-view-of-sea-waves-1631474.jpg" %}">
+  <img src="{% static_webp "images/bird-s-eye-view-of-two-boats-on-ocean-1139041.jpg" %}">
+  <img src="{% static_webp "images/brown-field-under-blue-sky-2986509.jpg" %}">
+
+  <h3>60% Quality</h3>
+
+  <img src="{% static_webp "images/bird-s-eye-view-of-sea-waves-1631474.jpg" 60 %}">
+  <img src="{% static_webp "images/bird-s-eye-view-of-two-boats-on-ocean-1139041.jpg" 60 %}">
+  <img src="{% static_webp "images/brown-field-under-blue-sky-2986509.jpg" 60 %}">
+
+  <h3>40% Quality</h3>
+
+  <img src="{% static_webp "images/bird-s-eye-view-of-sea-waves-1631474.jpg" 40 %}">
+  <img src="{% static_webp "images/bird-s-eye-view-of-two-boats-on-ocean-1139041.jpg" 40 %}">
+  <img src="{% static_webp "images/brown-field-under-blue-sky-2986509.jpg" 40 %}">
+
+</body>
+</html>
