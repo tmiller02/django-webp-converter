@@ -69,7 +69,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "webp.wsgi.application"
+WSGI_APPLICATION = "django_webp_converter.wsgi.application"
 
 
 # Database
