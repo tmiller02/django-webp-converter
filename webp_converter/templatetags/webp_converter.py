@@ -10,17 +10,20 @@ register = template.Library()
 @register.simple_tag(takes_context=True)
 def static_webp(context, static_path, quality=None):
     try:
-        webp_compatible = context['webp_compatible']
+        webp_compatible = context["webp_compatible"]
     except KeyError:
-        raise Exception("'webp_converter.context_processors.webp_support' "
-                        "needs to be added to your context processors.")
+        raise Exception(
+            "'webp_converter.context_processors.webp_support' "
+            "needs to be added to your context processors."
+        )
     if not webp_compatible:
         return static(static_path)
     key = make_image_key(static_path, quality)
     webp_image_url = cache.get(key)
     if not webp_image_url:
         webp_image, _ = WebPImage.objects.get_or_create(
-            static_path=static_path, quality=quality)
+            static_path=static_path, quality=quality
+        )
         webp_image.save_image()
         webp_image_url = webp_image.url
         cache.set(key, webp_image_url)

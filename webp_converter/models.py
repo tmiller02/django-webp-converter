@@ -15,7 +15,7 @@ class WebPImage(models.Model):
     quality = models.PositiveIntegerField(blank=True, null=True)
 
     class Meta:
-        unique_together = (('static_path', 'quality'),)
+        unique_together = (("static_path", "quality"),)
 
     @property
     def image_absolute_path(self):
@@ -29,14 +29,13 @@ class WebPImage(models.Model):
 
     @property
     def webp_relative_path(self):
-        key = hashlib.md5(
-            force_bytes(self.static_path + str(self.quality))
-        ).hexdigest()
-        return '{prefix}/{key_1}/{key_2}/{path}.webp'.format(
+        key = hashlib.md5(force_bytes(self.static_path + str(self.quality))).hexdigest()
+        return "{prefix}/{key_1}/{key_2}/{path}.webp".format(
             prefix=WEBP_CONVERTER_PREFIX,
             key_1=key[:2],
             key_2=key[2:8],
-            path=''.join(self.static_path.split('.')[:-1]))
+            path="".join(self.static_path.split(".")[:-1]),
+        )
 
     @property
     def webp_absolute_path(self):
@@ -58,9 +57,7 @@ class WebPImage(models.Model):
         image.save(**self._get_save_image_kwargs())
 
     def _get_save_image_kwargs(self):
-        kwargs = {
-            'fp': self.webp_absolute_path,
-            'format': 'WEBP'}
+        kwargs = {"fp": self.webp_absolute_path, "format": "WEBP"}
         if self.quality:
-            kwargs['quality'] = self.quality
+            kwargs["quality"] = self.quality
         return kwargs

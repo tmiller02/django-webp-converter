@@ -7,7 +7,7 @@ from webp_converter.utils import make_image_key, webp_image_querysets
 
 
 class Command(BaseCommand):
-    help = 'Clear webp cached images'
+    help = "Clear webp cached images"
 
     def handle(self, *args, **options):
         total_count = WebPImage.objects.all().count()
@@ -17,4 +17,4 @@ class Command(BaseCommand):
                 cache.delete(key)
         WebPImage.objects.all().delete()
         delete_webp_folder()
-        self.stdout.write('Successfully cleared cache')
+        self.stdout.write("Successfully cleared cache")

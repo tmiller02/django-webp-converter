@@ -8,13 +8,13 @@ from webp_converter.models import WebPImage
 
 
 def make_image_key(*args):
-    md5_hash = hashlib.md5(force_bytes(':'.join(str(arg) for arg in args)))
+    md5_hash = hashlib.md5(force_bytes(":".join(str(arg) for arg in args)))
     return "webp_converter:%s" % md5_hash.hexdigest()
 
 
 def webp_image_querysets(total_count, object_number=100):
     for index in range(0, total_count, object_number):
-        yield WebPImage.objects.all()[index: index + object_number]
+        yield WebPImage.objects.all()[index : index + object_number]
 
 
 def delete_webp_folder():
