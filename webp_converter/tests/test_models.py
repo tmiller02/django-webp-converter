@@ -1,9 +1,5 @@
-import mock
-import shutil
-from datetime import date
 import os
 from django.test import TestCase
-from django.core.files.storage import default_storage
 from django.contrib.staticfiles import finders
 from django.conf import settings
 from webp_converter.models import WebPImage
