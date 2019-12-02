@@ -12,7 +12,7 @@ from webp_converter.conf.settings import WEBP_CONVERTER_PREFIX
 
 class WebPImage(models.Model):
     static_path = models.CharField(max_length=512)
-    quality = models.PositiveIntegerField(blank=True, null=True)
+    quality = models.PositiveIntegerField()
 
     class Meta:
         unique_together = (("static_path", "quality"),)
