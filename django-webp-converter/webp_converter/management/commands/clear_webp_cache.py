@@ -1,10 +1,11 @@
 import os
 import shutil
+
 from django.core.management.base import BaseCommand, CommandError
 from django.core.cache import cache
 from django.core.files.storage import default_storage
 
-from webp_converter.utils import delete_webp_folder, make_image_key
+from webp_converter.utils import make_image_key
 from webp_converter.models import WebPImage
 from webp_converter.conf.settings import WEBP_CONVERTER_PREFIX
 

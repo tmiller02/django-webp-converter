@@ -4,12 +4,11 @@ from django.contrib.staticfiles import finders
 from django.conf import settings
 from webp_converter.models import WebPImage
 from webp_converter.conf.settings import WEBP_CONVERTER_PREFIX
-from webp_converter.utils import delete_webp_folder
 
 
 class TestModels(TestCase):
     def setUp(self):
-        self.webp_image = WebPImage(static_path="django-test-image.png", quality=80)
+        self.webp_image = WebPImage(static_path="images/django-test-image.png", quality=80)
         self.invalid_webp_image = WebPImage(static_path="missing.png", quality=80)
 
     def test_invalid_image_absolute_path(self):
@@ -18,15 +17,13 @@ class TestModels(TestCase):
 
     def test_valid_image_absolute_path(self):
         assert self.webp_image.image_absolute_path == finders.find(
-            "django-test-image.png"
+            "images/django-test-image.png"
         )
 
     def test_webp_relative_path(self):
-        assert (
-            self.webp_image.webp_relative_path
-            == "{prefix}/98/6ff1a1/django-test-image.webp".format(
-                prefix=WEBP_CONVERTER_PREFIX
-            )
+        self.assertEqual(
+            self.webp_image.webp_relative_path,
+            f"{WEBP_CONVERTER_PREFIX}/f2/580a53/images/django-test-image.webp"
         )
 
     def test_url(self):
@@ -44,6 +41,6 @@ class TestModels(TestCase):
         }
 
     def test_save_new_image(self):
-        delete_webp_folder()
+        assert not os.path.exists(self.webp_image.webp_absolute_path)
         self.webp_image.save_image()
         assert os.path.exists(self.webp_image.webp_absolute_path)
