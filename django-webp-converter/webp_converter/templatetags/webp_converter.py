@@ -1,5 +1,5 @@
 from django import template
-from django.contrib.staticfiles.templatetags.staticfiles import static
+from django.templatetags.static import static
 from django.core.cache import cache
 from webp_converter.utils import make_image_key
 from webp_converter.models import WebPImage

@@ -34,11 +34,17 @@ Add the ``webp_support`` context processor to your list of context processors:
 
 Run ``./manage.py migrate`` to add the required tables to the database.
 
+You will also need to configure django to serve locally stored files by
+configuring the ``MEDIA_URL`` and ``MEDIA_ROOT`` settings in your project's
+settings.py file.
 
-Additionally, you may also want to configure the ``MEDIA_URL`` and ``MEDIA_ROOT`` settings for your project in settings.py. For example:
+For example:
 
 .. code-block:: python
 
     MEDIA_URL = '/media/'
 
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+You'll probably also want to ensure that these files will be
+`served during development <https://docs.djangoproject.com/en/2.2/howto/static-files/#serving-uploaded-files-in-development>`_.

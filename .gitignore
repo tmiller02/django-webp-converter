@@ -1,6 +1,7 @@
-.idea
-dist/*
-django-webp-converter/django_webp_converter.egg-info
+/.idea
+/django-webp-converter/dist/*
+/django-webp-converter/django_webp_converter.egg-info
 *.pyc
 docs/_build/*
-db.sqlite3
+/sample_site/db.sqlite3
+/sample_site/media/
