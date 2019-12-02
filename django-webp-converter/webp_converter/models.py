@@ -57,7 +57,8 @@ class WebPImage(models.Model):
         image.save(**self._get_save_image_kwargs())
 
     def _get_save_image_kwargs(self):
-        kwargs = {"fp": self.webp_absolute_path, "format": "WEBP"}
-        if self.quality:
-            kwargs["quality"] = self.quality
-        return kwargs
+        return {
+            "format": "WEBP",
+            "fp": self.webp_absolute_path,
+            "quality": self.quality
+        }
