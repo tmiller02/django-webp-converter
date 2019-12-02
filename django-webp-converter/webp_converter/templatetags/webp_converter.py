@@ -1,6 +1,7 @@
 from django import template
 from django.templatetags.static import static
 from django.core.cache import cache
+
 from webp_converter.utils import make_image_key
 from webp_converter.models import WebPImage
 
@@ -8,7 +9,7 @@ register = template.Library()
 
 
 @register.simple_tag(takes_context=True)
-def static_webp(context, static_path, quality=None):
+def static_webp(context, static_path, quality=80):
     try:
         webp_compatible = context["webp_compatible"]
     except KeyError:
