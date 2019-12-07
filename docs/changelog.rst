@@ -1,6 +1,11 @@
 Changelog
 ============
 
+0.2.1 (2019-12-07)
+------------------
+
+* Remove duplicate deletion of WebP folder in the `clear_webp_cache` command.
+
 0.2.0 (2019-12-04)
 ------------------
 
