@@ -1,0 +1,1 @@
+django-webp-converter/README.rst
