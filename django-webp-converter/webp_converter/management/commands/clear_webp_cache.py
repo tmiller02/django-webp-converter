@@ -42,6 +42,3 @@ class Command(BaseCommand):
         if os.path.exists(webp_path):
             shutil.rmtree(webp_path)
         self.stdout.write("Successfully cleared cache")
-
-        if os.path.exists(webp_path):
-            shutil.rmtree(webp_path)
