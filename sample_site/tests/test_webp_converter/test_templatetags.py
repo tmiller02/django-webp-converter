@@ -16,7 +16,7 @@ class TestTemplateTags(TestCase):
         context = {"webp_compatible": True}
         result = static_webp(
             context=context, static_path=self.static_path, quality=75)
-        assert result == self.webp_image.url
+        assert result == self.webp_image.webp_url
 
     def test_missing_context(self):
         with self.assertRaises(Exception):

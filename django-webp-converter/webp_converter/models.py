@@ -1,8 +1,9 @@
-import os
+import io
 import hashlib
 from PIL import Image
 
 from django.core.files.storage import default_storage
+from django.core.files.base import ContentFile
 from django.contrib.staticfiles import finders
 from django.db import models
 from django.utils.encoding import force_bytes
@@ -38,27 +39,20 @@ class WebPImage(models.Model):
         )
 
     @property
-    def webp_absolute_path(self):
-        """
-        The full image file path of the webp image
-        """
-        return default_storage.path(self.webp_relative_path)
-
-    @property
-    def url(self):
+    def webp_url(self):
         return default_storage.url(self.webp_relative_path)
 
-    def save_image(self):
-        image = Image.open(self.image_absolute_path)
-        # Create directory structure if it does not exist
-        webp_dirname = os.path.dirname(self.webp_absolute_path)
-        if not os.path.exists(webp_dirname):
-            os.makedirs(webp_dirname)
-        image.save(**self._get_save_image_kwargs())
+    @property
+    def webp_image_exists(self):
+        return default_storage.exists(self.webp_relative_path)
 
-    def _get_save_image_kwargs(self):
-        return {
-            "format": "WEBP",
-            "fp": self.webp_absolute_path,
-            "quality": self.quality
-        }
+    def save_webp_image(self):
+        image = Image.open(self.image_absolute_path)
+        image_bytes = io.BytesIO()
+        image.save(
+            fp=image_bytes,
+            format="WEBP",
+            quality=self.quality
+        )
+        image_content_file = ContentFile(content=image_bytes.getvalue())
+        default_storage.save(self.webp_relative_path, image_content_file)

@@ -2,6 +2,7 @@ import os
 from django.test import TestCase
 from django.contrib.staticfiles import finders
 from django.conf import settings
+from django.core.files.storage import default_storage
 from webp_converter.models import WebPImage
 from webp_converter.conf.settings import WEBP_CONVERTER_PREFIX
 
@@ -28,19 +29,11 @@ class TestModels(TestCase):
 
     def test_url(self):
         assert (
-            self.webp_image.url
+            self.webp_image.webp_url
             == settings.MEDIA_URL + self.webp_image.webp_relative_path
         )
 
-    def test_save_image_kwargs(self):
-        save_image_kwargs = self.webp_image._get_save_image_kwargs()
-        assert save_image_kwargs == {
-            "format": "WEBP",
-            "quality": 80,
-            "fp": self.webp_image.webp_absolute_path,
-        }
-
     def test_save_new_image(self):
-        assert not os.path.exists(self.webp_image.webp_absolute_path)
-        self.webp_image.save_image()
-        assert os.path.exists(self.webp_image.webp_absolute_path)
+        assert not os.path.exists(default_storage.path(self.webp_image.webp_relative_path))
+        self.webp_image.save_webp_image()
+        assert os.path.exists(default_storage.path(self.webp_image.webp_relative_path))
