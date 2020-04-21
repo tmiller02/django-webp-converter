@@ -4,7 +4,6 @@ from django.core.files.storage import default_storage
 
 from webp_converter.utils import make_image_key
 from webp_converter.models import WebPImage
-from webp_converter.conf.settings import WEBP_CONVERTER_PREFIX
 
 
 class Command(BaseCommand):
