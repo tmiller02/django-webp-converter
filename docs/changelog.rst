@@ -1,6 +1,14 @@
 Changelog
 ============
 
+0.3.0 (2020-04-21)
+------------------
+
+* Use the default_storage.save and default_storage.delete methods when saving
+  and deleting images.
+* Add check for whether a WebP image already exists before attempting to save
+  the WebP image again following a cache miss.
+
 0.2.1 (2019-12-07)
 ------------------
 

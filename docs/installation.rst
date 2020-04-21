@@ -47,4 +47,8 @@ For example:
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 You'll probably also want to ensure that these files will be
-`served during development <https://docs.djangoproject.com/en/2.2/howto/static-files/#serving-uploaded-files-in-development>`_.
+`served during development <https://docs.djangoproject.com/en/3.0/howto/static-files/#serving-uploaded-files-in-development>`_.
+
+This project also makes use of `Django's cache framework <https://docs.djangoproject.com/en/3.0/topics/cache/>`_ to
+avoid making repeated requests to the database. You should ensure that you have set up caching via the ``CACHES``
+setting to achieve optimal performance.
