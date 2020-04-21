@@ -24,10 +24,10 @@ class Command(BaseCommand):
                 'This will delete all generated WebP images.\n\n'
                 'Are you sure you want to do this?\n\n'
                 "Type 'yes' to continue, or 'no' to cancel: "
-            ).format(webp_path=WEBP_CONVERTER_PREFIX)
+            )
             if input(confirm_message) != 'yes':
-                raise CommandError("Clearing webp cache cancelled.")
-        self.stdout.write("Deleting cache entries, webp images and webp models...")
+                raise CommandError("Clearing WebP cache cancelled.")
+        self.stdout.write("Deleting cache entries, WebP images and WebP models...")
         for webp_image in WebPImage.objects.all().iterator():
             key = make_image_key(webp_image.static_path, webp_image.quality)
             cache.delete(key)
