@@ -28,5 +28,5 @@ def static_webp(context, static_path, quality=80):
         if not webp_image.webp_image_exists:
             webp_image.save_webp_image()
         webp_image_url = webp_image.webp_url
-        cache.set(key, webp_image_url)
+        cache.set(key, webp_image_url, timeout=None)
     return webp_image_url
